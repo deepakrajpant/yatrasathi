@@ -1,0 +1,12 @@
+{
+  "indexes": [{"collectionGroup":"mockTests","queryScope":"COLLECTION","fields":[{"fieldPath":"status","order":"ASCENDING"},{"fieldPath":"premium","order":"ASCENDING"},{"fieldPath":"__name__","order":"ASCENDING"}]}],
+  "fieldOverrides": [
+    {"collectionGroup":"questions","fieldPath":"question","indexes":[]},
+    {"collectionGroup":"questions","fieldPath":"explanation","indexes":[]},
+    {"collectionGroup":"questions","fieldPath":"options","indexes":[]},
+    {"collectionGroup":"questionVersions","fieldPath":"previous","indexes":[]},
+    {"collectionGroup":"testAttempts","fieldPath":"questions","indexes":[]},
+    {"collectionGroup":"testAttempts","fieldPath":"answers","indexes":[]},
+    {"collectionGroup":"testAttempts","fieldPath":"result","indexes":[]}
+  ]
+}

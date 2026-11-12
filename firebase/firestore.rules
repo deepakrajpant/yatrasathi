@@ -1,0 +1,162 @@
+rules_version = '2';
+service cloud.firestore {
+ match /databases/{database}/documents {
+  function signed(){return request.auth != null;}
+  function admin(){return signed() && request.auth.token.email_verified == true && exists(/databases/$(database)/documents/admins/$(request.auth.uid));}
+  function enabled(){return !signed() || !exists(/databases/$(database)/documents/access/$(request.auth.uid)) || get(/databases/$(database)/documents/access/$(request.auth.uid)).data.disabled == false;}
+  function owner(uid){return signed() && request.auth.uid == uid && enabled();}
+  function premium(){return signed() && exists(/databases/$(database)/documents/access/$(request.auth.uid)) && get(/databases/$(database)/documents/access/$(request.auth.uid)).data.premiumUntil > request.time.toMillis();}
+  function shortText(x,n){return x is string && x.size() <= n;}
+  function question(q){
+   return q.keys().hasAll(['id','exam','subject','chapter','topic','level','importance','question','options','correct','marks','status','verification','explanation','trick','source','tags','image','fingerprintHash','updated','updatedBy'])
+    && q.keys().hasOnly(['id','exam','subject','chapter','topic','level','importance','question','options','correct','marks','status','verification','explanation','trick','source','tags','image','fingerprintHash','updated','updatedBy'])
+    && shortText(q.id,100) && q.id.matches('[A-Za-z0-9_-]+')
+    && shortText(q.exam,4000) && q.exam.size()>0 && shortText(q.subject,4000) && q.subject.size()>0
+    && shortText(q.chapter,4000) && q.chapter.size()>0 && shortText(q.topic,4000) && q.topic.size()>0
+    && shortText(q.question,4000) && q.question.size()>0 && q.level in [1,2,3] && q.importance in [1,2,3]
+    && q.options is list && q.options.size()>=2 && q.options.size()<=4
+    && shortText(q.options[0],2000) && q.options[0].size()>0 && shortText(q.options[1],2000) && q.options[1].size()>0
+    && (q.options.size()<3 || (shortText(q.options[2],2000) && q.options[2].size()>0))
+    && (q.options.size()<4 || (shortText(q.options[3],2000) && q.options[3].size()>0))
+    && q.correct is int && q.correct>=0 && q.correct<q.options.size() && q.marks is number && q.marks>0 && q.marks<=100
+    && shortText(q.explanation,12000) && shortText(q.trick,12000) && shortText(q.source,12000)
+    && q.verification in ['practice','verified','past-paper'] && (q.verification=='practice' || q.source.size()>0)
+    && q.tags is list && q.tags.size()<=30 && shortText(q.image,4000) && (q.image=='' || q.image.matches('https://.*'))
+    && q.status in ['draft','published','archived'] && shortText(q.fingerprintHash,64)
+    && q.updated is number && q.updatedBy==request.auth.uid;
+  }
+  function progress(p){
+   return p.keys().hasOnly(['id','viewed','attempts','correct','wrong','streak','reviews','interval','lastReviewed','nextReview','status','bookmark','difficult','updated'])
+    && p.keys().hasAll(['id','viewed','attempts','correct','wrong','streak','reviews','interval','lastReviewed','nextReview','status','bookmark','difficult','updated'])
+    && shortText(p.id,100) && p.viewed is int && p.viewed>=0 && p.attempts is int && p.attempts>=0
+    && p.correct is int && p.correct>=0 && p.wrong is int && p.wrong>=0 && p.correct+p.wrong==p.attempts
+    && p.streak is int && p.streak>=0 && p.reviews is int && p.reviews>=0
+    && p.interval is number && p.interval>=0 && p.lastReviewed is number && p.nextReview is number
+    && p.status in ['not-started','learning','needs-revision','mastered'] && p.bookmark is bool && p.difficult is bool && p.updated is number;
+  }
+  match /admins/{uid} {
+   allow get: if signed() && (request.auth.uid==uid || admin());
+   allow list: if admin();
+   allow write: if false;
+  }
+  match /access/{uid} {
+   allow get: if signed() && (request.auth.uid==uid || admin());
+   allow list: if admin();
+   allow create,update: if admin() && request.resource.data.keys().hasOnly(['disabled','premiumUntil','updated','updatedBy','id'])
+    && request.resource.data.disabled is bool && request.resource.data.premiumUntil is number && request.resource.data.premiumUntil>=0
+    && request.resource.data.updatedBy==request.auth.uid;
+   allow delete: if false;
+  }
+  match /users/{uid} {
+   allow read: if owner(uid) || admin();
+   allow create: if owner(uid) && (!exists(/databases/$(database)/documents/appSettings/public) || get(/databases/$(database)/documents/appSettings/public).data.registrationEnabled==true)
+    && validProfile();
+   allow update: if owner(uid) && validProfile();
+   allow delete: if false;
+   function validProfile(){return request.resource.data.keys().hasOnly(['name','email','exam','goal','lastActive']) && shortText(request.resource.data.name,100)
+    && request.resource.data.email==request.auth.token.email && shortText(request.resource.data.exam,150) && request.resource.data.goal is number
+    && request.resource.data.goal>=1 && request.resource.data.goal<=500 && request.resource.data.lastActive is number;}
+   match /questionProgress/{qid} {
+    allow read: if owner(uid)||admin();
+    allow create,update: if owner(uid) && progress(request.resource.data) && request.resource.data.id==qid;
+    allow delete: if owner(uid);
+   }
+   match /studySessions/{sid} {
+    allow read: if owner(uid)||admin();
+    allow create: if owner(uid) && request.resource.data.keys().hasOnly(['id','kind','questionId','started','day','seconds'])
+     && request.resource.data.id==sid && request.resource.data.kind in ['review','test']
+     && shortText(request.resource.data.questionId,100) && request.resource.data.started is number
+     && shortText(request.resource.data.day,10) && request.resource.data.seconds is number && request.resource.data.seconds>=0 && request.resource.data.seconds<=3600;
+    allow update: if owner(uid) && request.resource.data==resource.data;
+    allow delete: if false;
+   }
+   match /testAttempts/{aid} {
+    allow read: if owner(uid)||admin();
+    allow create: if owner(uid) && request.resource.data.keys().hasOnly(['id','owner','title','questions','answers','marked','index','started','end','negative','pass','finished','auto','result'])
+     && (!('owner' in request.resource.data) || request.resource.data.owner==uid)
+     && request.resource.data.id==aid && shortText(request.resource.data.title,200)
+     && request.resource.data.questions is list && request.resource.data.questions.size()>0 && request.resource.data.questions.size()<=50
+     && request.resource.data.answers is list && request.resource.data.answers.size()==request.resource.data.questions.size()
+     && request.resource.data.marked is list && request.resource.data.result is map
+     && request.resource.data.started is number && request.resource.data.finished is number && request.resource.data.end is number
+     && request.resource.data.negative is number && request.resource.data.negative>=0 && request.resource.data.negative<=1
+     && request.resource.data.pass is number && request.resource.data.pass>=0 && request.resource.data.pass<=100 && request.resource.data.auto is bool;
+    allow update,delete: if false;
+   }
+  }
+  match /questions/{qid} {
+   allow read: if admin() || (enabled() && resource.data.status=='published');
+   allow create,update: if admin() && question(request.resource.data) && request.resource.data.id==qid;
+   allow delete: if false;
+  }
+  match /questionVersions/{vid} {
+   allow read: if admin();
+   allow create: if admin() && request.resource.data.keys().hasOnly(['questionId','previous','created','actor'])
+    && shortText(request.resource.data.questionId,100) && request.resource.data.previous is map
+    && request.resource.data.created is number && request.resource.data.actor==request.auth.uid;
+   allow update,delete: if false;
+  }
+  match /curriculum/{cid} {
+   allow read: if enabled() || admin();
+   allow create,update: if admin() && request.resource.data.keys().hasOnly(['type','name','parent','order','archived','updated','updatedBy','id'])
+    && request.resource.data.type in ['exam','subject','chapter','topic'] && shortText(request.resource.data.name,150) && request.resource.data.name.size()>0
+    && shortText(request.resource.data.parent,100) && request.resource.data.order is number && request.resource.data.order>=0
+    && request.resource.data.archived is bool && request.resource.data.updatedBy==request.auth.uid;
+   allow delete: if false;
+  }
+  match /mockTests/{tid} {
+   allow read: if admin() || (enabled() && resource.data.status=='published' && (resource.data.premium==false || premium()));
+   allow create,update: if admin() && request.resource.data.keys().hasOnly(['title','description','questionIds','minutes','marks','negative','pass','premium','status','updated','updatedBy','id'])
+    && shortText(request.resource.data.title,200) && request.resource.data.title.size()>0 && shortText(request.resource.data.description,12000)
+    && request.resource.data.questionIds is list && request.resource.data.questionIds.size()>0 && request.resource.data.questionIds.size()<=50
+    && request.resource.data.minutes is number && request.resource.data.minutes>=1 && request.resource.data.minutes<=180
+    && request.resource.data.marks is number && request.resource.data.marks>=0 && request.resource.data.marks<=100
+    && request.resource.data.negative is number && request.resource.data.negative>=0 && request.resource.data.negative<=1
+    && request.resource.data.pass is number && request.resource.data.pass>=0 && request.resource.data.pass<=100
+    && request.resource.data.premium is bool && request.resource.data.status in ['draft','published','archived'] && request.resource.data.updatedBy==request.auth.uid;
+   allow delete: if false;
+  }
+  match /questionReports/{rid} {
+   allow read: if admin() || (signed() && resource.data.uid==request.auth.uid);
+   allow create: if signed() && enabled() && request.resource.data.keys().hasOnly(['uid','questionId','question','type','detail','status','resolution','created'])
+    && request.resource.data.uid==request.auth.uid && request.resource.data.status=='pending' && request.resource.data.resolution==''
+    && shortText(request.resource.data.questionId,100) && shortText(request.resource.data.question,4000)
+    && request.resource.data.type in ['Wrong answer','Incorrect explanation','Duplicate','Typing error','Outdated information','Missing image','Other']
+    && shortText(request.resource.data.detail,2000) && request.resource.data.detail.size()>0 && request.resource.data.created is number;
+   allow update: if admin() && request.resource.data.keys().hasOnly(['uid','questionId','question','type','detail','status','resolution','created','updated','updatedBy','id'])
+    && request.resource.data.uid==resource.data.uid && request.resource.data.questionId==resource.data.questionId
+    && request.resource.data.status in ['pending','resolved'] && shortText(request.resource.data.resolution,2000) && request.resource.data.updatedBy==request.auth.uid;
+   allow delete: if false;
+  }
+  match /announcements/{aid} {
+   allow read: if admin() || (enabled() && resource.data.published==true);
+   allow create,update: if admin() && request.resource.data.keys().hasOnly(['title','message','published','updated','updatedBy','id'])
+    && shortText(request.resource.data.title,200) && shortText(request.resource.data.message,12000)
+    && request.resource.data.published is bool && request.resource.data.updatedBy==request.auth.uid;
+   allow delete: if false;
+  }
+  match /appSettings/{sid} {
+   allow read: if sid=='public' || admin();
+   allow create,update: if admin() && sid=='public'
+    && request.resource.data.keys().hasOnly(['title','welcome','primaryColor','masteryStreak','registrationEnabled','maintenance','updated','updatedBy','id'])
+    && shortText(request.resource.data.title,60) && shortText(request.resource.data.welcome,200) && request.resource.data.primaryColor.matches('#[0-9a-fA-F]{6}')
+    && request.resource.data.masteryStreak is number && request.resource.data.masteryStreak>=2 && request.resource.data.masteryStreak<=10
+    && request.resource.data.registrationEnabled is bool && shortText(request.resource.data.maintenance,12000)
+    && request.resource.data.updatedBy==request.auth.uid;
+   allow delete: if false;
+  }
+  match /importJobs/{jid} {
+   allow read: if admin();
+   allow create,update: if admin() && request.resource.data.actor==request.auth.uid && request.resource.data.total is number
+    && request.resource.data.total<=1000 && request.resource.data.failed is list && request.resource.data.failed.size()<=1000;
+   allow delete: if false;
+  }
+  match /adminAuditLogs/{lid} {
+   allow read: if admin();
+   allow create: if admin() && request.resource.data.keys().hasOnly(['actor','action','target','created'])
+    && request.resource.data.actor==request.auth.uid && shortText(request.resource.data.action,100)
+    && shortText(request.resource.data.target,150) && request.resource.data.created is number;
+   allow update,delete: if false;
+  }
+ }
+}

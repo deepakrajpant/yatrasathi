@@ -1,0 +1,653 @@
+{
+  "schemaVersion": 1,
+  "questions": [
+    {
+      "id": "np-001",
+      "exam": "General Loksewa",
+      "subject": "Nepal Geography",
+      "chapter": "Physical geography",
+      "topic": "Mountains",
+      "level": 1,
+      "importance": 3,
+      "question": "नेपालको सबैभन्दा अग्लो हिमाल कुन हो?",
+      "options": [
+        "सगरमाथा",
+        "मकालु",
+        "धौलागिरि",
+        "अन्नपूर्ण"
+      ],
+      "correct": 0,
+      "explanation": "सगरमाथा नेपालको तथा विश्वकै सबैभन्दा अग्लो हिमाल हो।",
+      "trick": "",
+      "source": "Starter practice content; administrator review required before claiming verification.",
+      "verification": "practice",
+      "tags": [
+        "nepal geography"
+      ],
+      "marks": 1,
+      "image": "",
+      "status": "published"
+    },
+    {
+      "id": "np-002",
+      "exam": "General Loksewa",
+      "subject": "Nepal Geography",
+      "chapter": "Physical geography",
+      "topic": "Lakes",
+      "level": 1,
+      "importance": 3,
+      "question": "रारा ताल कुन जिल्लामा पर्छ?",
+      "options": [
+        "जुम्ला",
+        "मुगु",
+        "हुम्ला",
+        "डोल्पा"
+      ],
+      "correct": 1,
+      "explanation": "रारा ताल कर्णाली प्रदेशको मुगु जिल्लामा पर्छ।",
+      "trick": "",
+      "source": "Starter practice content; administrator review required before claiming verification.",
+      "verification": "practice",
+      "tags": [
+        "nepal geography"
+      ],
+      "marks": 1,
+      "image": "",
+      "status": "published"
+    },
+    {
+      "id": "np-003",
+      "exam": "General Loksewa",
+      "subject": "Nepal Geography",
+      "chapter": "Location",
+      "topic": "Neighbours",
+      "level": 1,
+      "importance": 2,
+      "question": "Which country borders Nepal to the north?",
+      "options": [
+        "India",
+        "China",
+        "Bhutan",
+        "Bangladesh"
+      ],
+      "correct": 1,
+      "explanation": "Nepal shares its northern border with China.",
+      "trick": "",
+      "source": "Starter practice content; administrator review required before claiming verification.",
+      "verification": "practice",
+      "tags": [
+        "nepal geography"
+      ],
+      "marks": 1,
+      "image": "",
+      "status": "published"
+    },
+    {
+      "id": "np-004",
+      "exam": "General Loksewa",
+      "subject": "Nepal Geography",
+      "chapter": "Physical geography",
+      "topic": "Rivers",
+      "level": 2,
+      "importance": 2,
+      "question": "Which of these is a major river system of western Nepal?",
+      "options": [
+        "Koshi",
+        "Karnali",
+        "Mechi",
+        "Kankai"
+      ],
+      "correct": 1,
+      "explanation": "Karnali is a major river system of western Nepal.",
+      "trick": "",
+      "source": "Starter practice content; administrator review required before claiming verification.",
+      "verification": "practice",
+      "tags": [
+        "nepal geography"
+      ],
+      "marks": 1,
+      "image": "",
+      "status": "published"
+    },
+    {
+      "id": "hi-001",
+      "exam": "General Loksewa",
+      "subject": "History & Culture",
+      "chapter": "Buddhist heritage",
+      "topic": "Lumbini",
+      "level": 1,
+      "importance": 3,
+      "question": "गौतम बुद्धको जन्मस्थल कुन हो?",
+      "options": [
+        "सारनाथ",
+        "बोधगया",
+        "लुम्बिनी",
+        "कुशीनगर"
+      ],
+      "correct": 2,
+      "explanation": "सिद्धार्थ गौतमको जन्म नेपालको लुम्बिनीमा भएको थियो।",
+      "trick": "",
+      "source": "Starter practice content; administrator review required before claiming verification.",
+      "verification": "practice",
+      "tags": [
+        "history & culture"
+      ],
+      "marks": 1,
+      "image": "",
+      "status": "published"
+    },
+    {
+      "id": "hi-002",
+      "exam": "General Loksewa",
+      "subject": "History & Culture",
+      "chapter": "Art",
+      "topic": "Architecture",
+      "level": 1,
+      "importance": 2,
+      "question": "Araniko is particularly associated with which field?",
+      "options": [
+        "Medicine",
+        "Astronomy",
+        "Art and architecture",
+        "Agronomy"
+      ],
+      "correct": 2,
+      "explanation": "Araniko is remembered as a Nepalese artist and architect.",
+      "trick": "",
+      "source": "Starter practice content; administrator review required before claiming verification.",
+      "verification": "practice",
+      "tags": [
+        "history & culture"
+      ],
+      "marks": 1,
+      "image": "",
+      "status": "published"
+    },
+    {
+      "id": "hi-003",
+      "exam": "General Loksewa",
+      "subject": "History & Culture",
+      "chapter": "Festivals",
+      "topic": "Kathmandu",
+      "level": 2,
+      "importance": 2,
+      "question": "Indra Jatra is particularly associated with which city?",
+      "options": [
+        "Kathmandu",
+        "Dharan",
+        "Janakpur",
+        "Nepalgunj"
+      ],
+      "correct": 0,
+      "explanation": "Indra Jatra is an important cultural festival of Kathmandu.",
+      "trick": "",
+      "source": "Starter practice content; administrator review required before claiming verification.",
+      "verification": "practice",
+      "tags": [
+        "history & culture"
+      ],
+      "marks": 1,
+      "image": "",
+      "status": "published"
+    },
+    {
+      "id": "hi-004",
+      "exam": "General Loksewa",
+      "subject": "History & Culture",
+      "chapter": "Unification",
+      "topic": "Gorkha",
+      "level": 1,
+      "importance": 3,
+      "question": "Which king is primarily associated with the Gorkha-led unification campaign of Nepal?",
+      "options": [
+        "Prithvi Narayan Shah",
+        "Tribhuvan",
+        "Mahendra",
+        "Pratap Malla"
+      ],
+      "correct": 0,
+      "explanation": "Prithvi Narayan Shah led the expansion and unification campaign from Gorkha.",
+      "trick": "",
+      "source": "Starter practice content; administrator review required before claiming verification.",
+      "verification": "practice",
+      "tags": [
+        "history & culture"
+      ],
+      "marks": 1,
+      "image": "",
+      "status": "published"
+    },
+    {
+      "id": "wo-001",
+      "exam": "General Loksewa",
+      "subject": "World GK",
+      "chapter": "Organizations",
+      "topic": "United Nations",
+      "level": 1,
+      "importance": 3,
+      "question": "In which year was the United Nations established?",
+      "options": [
+        "1919",
+        "1945",
+        "1950",
+        "1965"
+      ],
+      "correct": 1,
+      "explanation": "The United Nations was established in 1945.",
+      "trick": "",
+      "source": "Starter practice content; administrator review required before claiming verification.",
+      "verification": "practice",
+      "tags": [
+        "world gk"
+      ],
+      "marks": 1,
+      "image": "",
+      "status": "published"
+    },
+    {
+      "id": "wo-002",
+      "exam": "General Loksewa",
+      "subject": "World GK",
+      "chapter": "World geography",
+      "topic": "Oceans",
+      "level": 1,
+      "importance": 2,
+      "question": "Which ocean has the largest surface area?",
+      "options": [
+        "Indian",
+        "Atlantic",
+        "Arctic",
+        "Pacific"
+      ],
+      "correct": 3,
+      "explanation": "The Pacific Ocean has the largest surface area.",
+      "trick": "",
+      "source": "Starter practice content; administrator review required before claiming verification.",
+      "verification": "practice",
+      "tags": [
+        "world gk"
+      ],
+      "marks": 1,
+      "image": "",
+      "status": "published"
+    },
+    {
+      "id": "wo-003",
+      "exam": "General Loksewa",
+      "subject": "World GK",
+      "chapter": "World geography",
+      "topic": "Capitals",
+      "level": 1,
+      "importance": 2,
+      "question": "What is the capital of Japan?",
+      "options": [
+        "Osaka",
+        "Kyoto",
+        "Tokyo",
+        "Nagoya"
+      ],
+      "correct": 2,
+      "explanation": "Tokyo is the capital of Japan.",
+      "trick": "",
+      "source": "Starter practice content; administrator review required before claiming verification.",
+      "verification": "practice",
+      "tags": [
+        "world gk"
+      ],
+      "marks": 1,
+      "image": "",
+      "status": "published"
+    },
+    {
+      "id": "wo-004",
+      "exam": "General Loksewa",
+      "subject": "World GK",
+      "chapter": "World geography",
+      "topic": "Continents",
+      "level": 1,
+      "importance": 2,
+      "question": "Which continent has the greatest land area?",
+      "options": [
+        "Africa",
+        "Asia",
+        "Europe",
+        "South America"
+      ],
+      "correct": 1,
+      "explanation": "Asia has the greatest land area.",
+      "trick": "",
+      "source": "Starter practice content; administrator review required before claiming verification.",
+      "verification": "practice",
+      "tags": [
+        "world gk"
+      ],
+      "marks": 1,
+      "image": "",
+      "status": "published"
+    },
+    {
+      "id": "sc-001",
+      "exam": "Nepal Electricity Authority (NEA)",
+      "subject": "Science & Technology",
+      "chapter": "Measurements",
+      "topic": "SI units",
+      "level": 1,
+      "importance": 3,
+      "question": "विद्युत् धाराको SI एकाइ के हो?",
+      "options": [
+        "भोल्ट",
+        "ओम",
+        "एम्पियर",
+        "वाट"
+      ],
+      "correct": 2,
+      "explanation": "विद्युत् धाराको SI आधारभूत एकाइ एम्पियर हो।",
+      "trick": "",
+      "source": "Starter practice content; administrator review required before claiming verification.",
+      "verification": "practice",
+      "tags": [
+        "science & technology"
+      ],
+      "marks": 1,
+      "image": "",
+      "status": "published"
+    },
+    {
+      "id": "sc-002",
+      "exam": "Nepal Electricity Authority (NEA)",
+      "subject": "Science & Technology",
+      "chapter": "Chemistry",
+      "topic": "Molecules",
+      "level": 1,
+      "importance": 3,
+      "question": "What is the chemical formula of water?",
+      "options": [
+        "CO2",
+        "H2O",
+        "O2",
+        "NaCl"
+      ],
+      "correct": 1,
+      "explanation": "A water molecule contains two hydrogen atoms and one oxygen atom.",
+      "trick": "",
+      "source": "Starter practice content; administrator review required before claiming verification.",
+      "verification": "practice",
+      "tags": [
+        "science & technology"
+      ],
+      "marks": 1,
+      "image": "",
+      "status": "published"
+    },
+    {
+      "id": "sc-003",
+      "exam": "Nepal Electricity Authority (NEA)",
+      "subject": "Science & Technology",
+      "chapter": "Electricity",
+      "topic": "AC circuits",
+      "level": 2,
+      "importance": 3,
+      "question": "What is the inductive reactance of an ideal inductor?",
+      "options": [
+        "2*pi*f*L",
+        "1/(2*pi*f*L)",
+        "f/L",
+        "L/f"
+      ],
+      "correct": 0,
+      "explanation": "Inductive reactance is XL = omega L = 2*pi*f*L ohms.",
+      "trick": "",
+      "source": "Starter practice content; administrator review required before claiming verification.",
+      "verification": "practice",
+      "tags": [
+        "science & technology"
+      ],
+      "marks": 1,
+      "image": "",
+      "status": "published"
+    },
+    {
+      "id": "sc-004",
+      "exam": "Nepal Electricity Authority (NEA)",
+      "subject": "Science & Technology",
+      "chapter": "Electricity",
+      "topic": "Three-phase power",
+      "level": 3,
+      "importance": 3,
+      "question": "For a balanced three-phase load, real power using line voltage VL and line current IL is:",
+      "options": [
+        "VL*IL*cos(phi)",
+        "3*VL*IL*cos(phi)",
+        "sqrt(3)*VL*IL*cos(phi)",
+        "sqrt(3)*VL*IL*sin(phi)"
+      ],
+      "correct": 2,
+      "explanation": "For a balanced three-phase system, P = sqrt(3)*VL*IL*cos(phi).",
+      "trick": "",
+      "source": "Starter practice content; administrator review required before claiming verification.",
+      "verification": "practice",
+      "tags": [
+        "science & technology"
+      ],
+      "marks": 1,
+      "image": "",
+      "status": "published"
+    },
+    {
+      "id": "co-001",
+      "exam": "General Loksewa",
+      "subject": "Computer Knowledge",
+      "chapter": "Fundamentals",
+      "topic": "Processors",
+      "level": 1,
+      "importance": 3,
+      "question": "What does CPU stand for?",
+      "options": [
+        "Central Processing Unit",
+        "Computer Power Unit",
+        "Central Program Utility",
+        "Control Processing User"
+      ],
+      "correct": 0,
+      "explanation": "CPU means Central Processing Unit.",
+      "trick": "",
+      "source": "Starter practice content; administrator review required before claiming verification.",
+      "verification": "practice",
+      "tags": [
+        "computer knowledge"
+      ],
+      "marks": 1,
+      "image": "",
+      "status": "published"
+    },
+    {
+      "id": "co-002",
+      "exam": "General Loksewa",
+      "subject": "Computer Knowledge",
+      "chapter": "Number systems",
+      "topic": "Binary",
+      "level": 1,
+      "importance": 3,
+      "question": "What is the radix of the binary number system?",
+      "options": [
+        "8",
+        "10",
+        "16",
+        "2"
+      ],
+      "correct": 3,
+      "explanation": "Binary has radix 2 and uses the digits 0 and 1.",
+      "trick": "",
+      "source": "Starter practice content; administrator review required before claiming verification.",
+      "verification": "practice",
+      "tags": [
+        "computer knowledge"
+      ],
+      "marks": 1,
+      "image": "",
+      "status": "published"
+    },
+    {
+      "id": "co-003",
+      "exam": "General Loksewa",
+      "subject": "Computer Knowledge",
+      "chapter": "Networking",
+      "topic": "IPv4",
+      "level": 2,
+      "importance": 3,
+      "question": "How many bits are in an IPv4 address?",
+      "options": [
+        "16",
+        "32",
+        "64",
+        "128"
+      ],
+      "correct": 1,
+      "explanation": "An IPv4 address has 32 bits. An IPv6 address has 128 bits.",
+      "trick": "",
+      "source": "Starter practice content; administrator review required before claiming verification.",
+      "verification": "practice",
+      "tags": [
+        "computer knowledge"
+      ],
+      "marks": 1,
+      "image": "",
+      "status": "published"
+    },
+    {
+      "id": "co-004",
+      "exam": "General Loksewa",
+      "subject": "Computer Knowledge",
+      "chapter": "Number systems",
+      "topic": "Conversion",
+      "level": 3,
+      "importance": 2,
+      "question": "What is hexadecimal 2F in decimal?",
+      "options": [
+        "31",
+        "39",
+        "47",
+        "52"
+      ],
+      "correct": 2,
+      "explanation": "2F(hex) = 2*16 + 15 = 47(decimal).",
+      "trick": "",
+      "source": "Starter practice content; administrator review required before claiming verification.",
+      "verification": "practice",
+      "tags": [
+        "computer knowledge"
+      ],
+      "marks": 1,
+      "image": "",
+      "status": "published"
+    },
+    {
+      "id": "te-001",
+      "exam": "Nepal Telecom (NTC)",
+      "subject": "Telecommunications",
+      "chapter": "Signals",
+      "topic": "Frequency",
+      "level": 1,
+      "importance": 3,
+      "question": "आवृत्तिको SI एकाइ के हो?",
+      "options": [
+        "वाट",
+        "हर्ट्ज",
+        "डेसिबेल",
+        "भोल्ट"
+      ],
+      "correct": 1,
+      "explanation": "आवृत्तिको SI एकाइ हर्ट्ज हो।",
+      "trick": "",
+      "source": "Starter practice content; administrator review required before claiming verification.",
+      "verification": "practice",
+      "tags": [
+        "telecommunications"
+      ],
+      "marks": 1,
+      "image": "",
+      "status": "published"
+    },
+    {
+      "id": "te-002",
+      "exam": "Nepal Telecom (NTC)",
+      "subject": "Telecommunications",
+      "chapter": "Transmission",
+      "topic": "Optical fibre",
+      "level": 1,
+      "importance": 3,
+      "question": "Optical fibre carries information primarily through:",
+      "options": [
+        "Sound waves",
+        "Light signals",
+        "Water waves",
+        "Heat pulses"
+      ],
+      "correct": 1,
+      "explanation": "Optical fibre carries information using light signals.",
+      "trick": "",
+      "source": "Starter practice content; administrator review required before claiming verification.",
+      "verification": "practice",
+      "tags": [
+        "telecommunications"
+      ],
+      "marks": 1,
+      "image": "",
+      "status": "published"
+    },
+    {
+      "id": "te-003",
+      "exam": "Nepal Telecom (NTC)",
+      "subject": "Telecommunications",
+      "chapter": "Digital communication",
+      "topic": "Sampling",
+      "level": 2,
+      "importance": 3,
+      "question": "For a low-pass band-limited signal with maximum frequency B, ideal Nyquist sampling requires:",
+      "options": [
+        "fs >= 2B",
+        "fs = B/2",
+        "fs < B",
+        "fs = 0"
+      ],
+      "correct": 0,
+      "explanation": "The ideal Nyquist rate is twice the highest signal frequency; practical sampling uses margin above the minimum.",
+      "trick": "",
+      "source": "Starter practice content; administrator review required before claiming verification.",
+      "verification": "practice",
+      "tags": [
+        "telecommunications"
+      ],
+      "marks": 1,
+      "image": "",
+      "status": "published"
+    },
+    {
+      "id": "te-004",
+      "exam": "Nepal Telecom (NTC)",
+      "subject": "Telecommunications",
+      "chapter": "Information theory",
+      "topic": "Channel capacity",
+      "level": 3,
+      "importance": 3,
+      "question": "For bandwidth B and linear signal-to-noise ratio S/N, Shannon capacity is:",
+      "options": [
+        "B*log2(1+S/N)",
+        "B*log10(S/N)",
+        "2*B*(S/N)",
+        "B/(1+S/N)"
+      ],
+      "correct": 0,
+      "explanation": "Shannon capacity C = B*log2(1+S/N) bits per second, under the theorem's channel assumptions.",
+      "trick": "",
+      "source": "Starter practice content; administrator review required before claiming verification.",
+      "verification": "practice",
+      "tags": [
+        "telecommunications"
+      ],
+      "marks": 1,
+      "image": "",
+      "status": "published"
+    }
+  ]
+}

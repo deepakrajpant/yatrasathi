@@ -1,0 +1,21 @@
+{
+  "passed": [
+    "Guest dashboard loads all six subjects after sample fetch, despite Firebase failure",
+    "Loaded-bank search filters questions",
+    "Bookmark persists across routes and reload",
+    "Recall rating persists question progress and schedules review",
+    "Active test preserves answers, position and absolute deadline on refresh",
+    "Test submission stores snapshot and renders complete answer review",
+    "Progress history opens completed result",
+    "Guest admin route refuses access",
+    "Expired recovered test automatically submits",
+    "Mobile menu reaches profile without horizontal overflow",
+    "Admin editor creates and publishes a validated record (mock repository)",
+    "Import validates full schema and excludes invalid records before writes",
+    "Confirmed import writes valid rows and produces a summary (mock repository)",
+    "Admin test builder generates IDs and saves a test (mock repository)",
+    "No uncaught browser exceptions"
+  ],
+  "uncaughtErrors": [],
+  "liveFirebaseTested": false
+}
